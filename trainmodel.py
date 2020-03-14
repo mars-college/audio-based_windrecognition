@@ -12,7 +12,7 @@ import tensorflow as tf
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
-SAMPLING_RATE = 44000
+SAMPLING_RATE = 16000
 FFT_SIZE = 256
 STFT_MATRIX_SIZE = 1 + FFT_SIZE // 2
 

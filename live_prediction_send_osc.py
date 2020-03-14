@@ -1,5 +1,5 @@
-#  emoIntercept - classify audio emotion 
-#  aeb 2019
+#  classify audio - wind or no wind 
+
 
 #librosa == 0.5.1
 
@@ -17,11 +17,10 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 warnings.simplefilter(action='ignore', category=FutureWarning)
 warnings.simplefilter(action='ignore', category=DeprecationWarning)
 
-ifttt_event = 'Emointerception | aeb2019'
+ifttt_event = 'wind or no wind | brahman'
 ifttt_key = '*********************'
 ifttt_url = 'https://maker.ifttt.com/trigger/{event}/with/key/{key}'.format(
     event=ifttt_event, key=ifttt_key)
-
 def make_web_request(label):
     data = {}
     data['value1'] = label
@@ -32,7 +31,7 @@ def make_web_request(label):
         print('Failed to make a web request')
 
 
-sr = 16000
+sr = 16000 # make sure this is same as trained audio 
 chunk = 1 * sr
 ffs_sz = 256
 threshold = 0.2
@@ -83,7 +82,7 @@ try:
         predictions_in_60_sec = np.vstack([predictions_in_60_sec, predictions])
         count = count + 1
         
-        # ~ here for osc message
+        #here for sending osc message
         if LABELS[predictions_mean.argmax()] == 'wind':
             print('its windy!')
             from oscpy.client import OSCClient
@@ -95,7 +94,6 @@ try:
                 print('osc sending')
             
       
-        # ~ print(LABELS[predictions_mean.argmax()])
         elapsed_time = time.time() - start
 
         localtime = '{0.tm_hour:02d}:{0.tm_min:02d}:{0.tm_sec:02d}'.format(
