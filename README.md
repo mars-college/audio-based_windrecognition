@@ -1,8 +1,10 @@
 # audio-based wind recognition 
 
 
-alice baird 2020
 
-created as part of Brahman2020 #stupidhackethon  
+created as part of Brahman2020 #stupidhackathon  
 
 a audio classifier of raw audio input - should be retrained with more audio for higher accurcay. 
+
+
+alice baird 2020
