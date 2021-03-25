@@ -31,7 +31,7 @@ public==2019.4.13
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 PyAudio==0.2.11
-PyYAML==5.3
+PyYAML==5.4
 query-string==2019.4.13
 request==2019.4.13
 requests==2.23.0
