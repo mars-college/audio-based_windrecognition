@@ -9,6 +9,8 @@ from keras.optimizers import Adam
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 import tensorflow as tf
+from sklearn.model_selection import train_test_split
+from keras.callbacks import EarlyStopping
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
@@ -50,12 +52,10 @@ model.compile(Adam(lr=0.01),
               loss='categorical_crossentropy',
               metrics=['accuracy'])
 
-from sklearn.model_selection import train_test_split
 
 index_cat = keras.utils.to_categorical(index)
 data_train, data_test, index_train, index_test = train_test_split(data, index_cat, test_size=0.2)
 
-from keras.callbacks import EarlyStopping
 
 es_callback = EarlyStopping(monitor='val_acc',
                             patience=2,
